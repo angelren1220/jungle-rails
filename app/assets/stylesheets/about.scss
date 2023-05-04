@@ -1,3 +1,25 @@
 // Place all the styles related to the About controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.about-section h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+
+}
