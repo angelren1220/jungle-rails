@@ -4,7 +4,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
-    @category = category.new
+    @category = Category.new
   end
 
   def create
@@ -15,12 +15,6 @@ class Admin::CategoriesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def destroy
-    @category = Category.find params[:id]
-    @category.destroy
-    redirect_to [:admin, :categories], notice: 'Category deleted!'
   end
 
   private
