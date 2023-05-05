@@ -1,0 +1,20 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Add some spacing between form fields */
+form label, form input, form button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+/* Style the error messages */
+.error_explanation {
+  color: #dc3545;
+  margin-bottom: 20px;
+}
