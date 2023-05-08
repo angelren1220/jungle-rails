@@ -5,12 +5,20 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
-      redirect_to '/'
+    
+    if !user.valid?
+      user.errors.each do |error|
+        attribute = error.attribute
+        space = " "
+        message = error.message
+        redirect_to '/signup', notice: attribute.to_s + space + message
+      end
     else
-      redirect_to '/signup'
+      user.save
+      session[:user_id] = user.id
+      redirect_to '/' 
     end
+
   end
 
   private
