@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  include ProductHelper
   monetize :price_cents, numericality: true
   mount_uploader :image, ProductImageUploader
 
