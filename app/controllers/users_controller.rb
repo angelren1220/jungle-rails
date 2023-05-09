@@ -7,12 +7,8 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     
     if !user.valid?
-      user.errors.each do |error|
-        attribute = error.attribute
-        space = " "
-        message = error.message
-        redirect_to '/signup', notice: attribute.to_s + space + message
-      end
+      message = user.errors.full_messages.join(" ")
+      redirect_to '/signup', notice: message
     else
       user.save
       session[:user_id] = user.id
