@@ -8,22 +8,40 @@ RSpec.describe User, type: :model do
       @user = User.create(first_name: 'Linxue', last_name: 'Ren', email: 'linxueren@mail.com', password: 'password', password_confirmation: 'password')
 
       expect(@user).to be_valid
-      expect(@user.save!).to be true
     end
 
-    it 'checks presence of required fields, throws errors required fields cant be blank without required fields' do
-      @user = User.create()
-
+    it 'throws an error First name cant be blank without first name' do
+      @user = User.create(last_name: 'Ren', email: 'linxueren@mail.com', password: 'password', password_confirmation: 'password')
+      expect(@user).to_not be_valid
       expect(@user.errors.messages[:first_name]).to include "can't be blank"
+
+    end
+    it 'throws an error Last name cant be blank without last name' do
+      @user = User.create(first_name: 'Linxue', email: 'linxueren@mail.com', password: 'password', password_confirmation: 'password')
+      expect(@user).to_not be_valid
       expect(@user.errors.messages[:last_name]).to include "can't be blank"
+
+    end
+    it 'throws an error password cant be blank without password' do
+      @user = User.create(first_name: 'Linxue', last_name: 'Ren', email: 'linxueren@mail.com', password_confirmation: 'password')
+      expect(@user).to_not be_valid
       expect(@user.errors.messages[:password]).to include "can't be blank"
-      expect(@user.errors.messages[:password_confirmation]).to include "can't be blank"
+
     end
 
-    # it 'throws an errors required fields cant be blank without required fields' do
-    #   @user = User.create(first_name: 'Linxue', last_name: 'Ren', password: 'password', password_confirmation: 'password')
-    #   puts @user.errors.full_messages
-    # end
+    it 'throws an error Password confrimation cant be blank without password confirmation' do
+      @user = User.create(first_name: 'Linxue', last_name: 'Ren', email: 'linxueren@mail.com', password: 'password')
+      expect(@user).to_not be_valid
+      expect(@user.errors.messages[:password_confirmation]).to include "can't be blank"
+
+    end
+    it 'throws an error Email cant be blank without email' do
+      @user = User.create(first_name: 'Linxue', last_name: 'Ren', password: 'password', password_confirmation: 'password')
+      expect(@user).to_not be_valid
+      expect(@user.errors.messages[:email]).to include "can't be blank"
+
+    end
+
     it 'checks password\'s length, throws an error if password too short' do
       @user = User.create(first_name: 'Linxue', last_name: 'Ren', email: 'linxueren@mail.com', password: '123', password_confirmation: '123')
 
@@ -62,5 +80,40 @@ RSpec.describe User, type: :model do
     end
   end
 
+  # authenicate
+
+  describe '.authenticate_with_credentials' do
+    before(:each) do
+      @user = User.create(first_name: 'Linxue', last_name: 'Ren', email: 'linxueren@mail.com', password: 'password', password_confirmation: 'password')
+    end
+
+   it 'returns a user with matching email and password' do
+
+    expect(User.authenticate_with_credentials('linxueren@mail.com', 'password')).to eq @user
+
+   end
+
+   it 'return nil with unmatching email and password' do
+
+    expect(User.authenticate_with_credentials('linxueren@mail.com', '123')).to eq nil
+
+    expect(User.authenticate_with_credentials('linxue@mail.com', 'password')).to eq nil
+
+   end
+
+   it 'returns a user with matching email and password in upper case' do
+
+    expect(User.authenticate_with_credentials('LINXUEREN@mail.com', 'password')).to eq @user
+
+
+   end
+
+   it 'returns a user with matching email with spaces and password' do
+
+    expect(User.authenticate_with_credentials('   linxueren@mail.com', 'password')).to eq @user
+
+   end
+
+  end
 
 end
