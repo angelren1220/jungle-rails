@@ -1,14 +1,12 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1.
-
-This was an inherited code base where we were given the task to fix some bugs and implement new features. New routes are created following a RESTful convention.
+A mini e-commerce application built with Rails 6.1. It includes bug fixes, UI changes, and new features that enhance the user experience.
 
 - Bug fixes:
   - Money formatting: unified money formatting accross the site
   - Missing admin security: require admin username and password to access admin pages
 
-- UI change:
+- UI changes:
   - Display a message and link to home page if cart is empty instead of cart details with any data
   - Display a "Sold Out" badge for items with no inventory
   - Display details of the order after an order was placed successfully
@@ -20,6 +18,11 @@ This was an inherited code base where we were given the task to fix some bugs an
   - Add new databases and pages to support user login and registration
     - passwords are properly hashed with bcrypt
     - emails must be unique and are case insensitive
+    - display error messages for login/signup pages
+
+- Tests:
+  - RsSpec tests for product and user models
+  - Cypress tests for home page, product details, add to cart and user login/signup
 
 ## Setup
 
