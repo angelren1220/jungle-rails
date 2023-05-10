@@ -1,6 +1,11 @@
 <section class="orders-show">
 
   <header class="page-header">
+  <% flash.each do |type, msg| %>
+  <div class="alert alert-success">
+    <%= msg %>
+  </div>
+<% end %>
     <h1>Order #<%= @order.id %></h1>
   </header>
 
