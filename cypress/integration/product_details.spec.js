@@ -9,20 +9,22 @@ describe("Product", () => {
 
   it("Navigate to product 1 and its details should be shown", () => {
     cy.contains('Giant Tea')
-      .should("have.attr", "href", "/products/1")
       .click()
+      // check if the links to the correct product
+      .location('pathname').should('eq', '/products/1')
       .get(".products-show .product-detail")
       .should("be.visible")
-      .contains('Giant Tea'); // check if the links to the correct product
+      .contains('Giant Tea');
   });
   
   it("Navigate to product 2 and its details should be shown", () => {
     cy.contains('Scented Blade')
-      .should("have.attr", "href", "/products/2")
       .click()
+      // check if the links to the correct product
+      .location('pathname').should('eq', '/products/2')
       .get(".products-show .product-detail")
       .should("be.visible")
-      .contains('Scented Blade'); // check if the links to the correct product
+      .contains('Scented Blade');
   });
 
 });
