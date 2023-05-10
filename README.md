@@ -24,6 +24,23 @@ A mini e-commerce application built with Rails 6.1. It includes bug fixes, UI ch
   - RsSpec tests for product and user models
   - Cypress tests for home page, product details, add to cart and user login/signup
 
+# Results
+- Admin login
+![](https://github.com/angelren1220/jungle-rails/blob/master/docs/admin-login.png)
+
+- Soldout badge
+![](https://github.com/angelren1220/jungle-rails/blob/master/docs/sold-out-badge.png)
+
+- Product detail
+![](https://github.com/angelren1220/jungle-rails/blob/master/docs/product-detail.png)
+
+- Invalid login
+![](https://github.com/angelren1220/jungle-rails/blob/master/docs/error-message-invalid-login.png)
+
+- Checkout order summary
+![](https://github.com/angelren1220/jungle-rails/blob/master/docs/guest-checkout.png)
+
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
